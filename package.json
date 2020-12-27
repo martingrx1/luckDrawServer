@@ -1,0 +1,14 @@
+{
+  "name": "luck-draw-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js  --ignore db/data"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.2.2"
+  }
+}
