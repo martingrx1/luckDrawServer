@@ -1,1 +1,0 @@
-[{"path":"/","children":[{"title":"后台配置","path":"/config","children":[{"title":"奖品配置","path":"/prize"},{"title":"小花花配置","path":"/flower"}]},{"title":"试卷购买","path":"/paper"},{"title":"试卷后台","path":"/paperPlatform"},{"title":"试卷上传","path":"/uploadPaper"},{"title":"抽奖","path":"/draw"},{"path":"*","title":"404"}]}]
