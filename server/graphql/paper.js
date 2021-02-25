@@ -7,30 +7,38 @@ const mongoose = require('../../db/connect');
 const paperSchema = require('../scheme/paper');
 
 var typeDefs = `
-input Paper{
+input InputPaper{
     name: String!,
-    college: String!,
-    major: String!,
     type: [String]!,
     hasAnswer: Boolean!,
     price: Int!,
     filePath: String,
 }
+type Paper{
+  name:String
+}
 type InsertRes{
   id:String
 }
+
 type Query{
-  getPaper:Int
+  getPaperList:[Paper]
 }
 type Mutation{
-    uploadPaper(input:Paper):InsertRes
+    uploadPaper(input:InputPaper):InsertRes
 } 
 `;
 
 var resolvers = {
   Query: {
-    getPaper: () => {
-      return 2;
+    getPaperList: async () => {
+      try {
+        const db = mongoose.connection;
+        const paperModel = db.model('paper', paperSchema);
+        return await paperModel.getPeperList(['name']);
+      } catch (err) {
+        return err;
+      }
     }
   },
   Mutation: {

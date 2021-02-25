@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 module.exports = function (req, res) {
   let filePath = path.resolve(__dirname, '../../files/');
+  let fileName = '';
 
   console.log(filePath);
 
@@ -30,11 +31,12 @@ module.exports = function (req, res) {
 
   form.on('file', (name, file) => {
     // 重命名文件
+    fileName = file.name;
     fs.renameSync(file.path, filePath + '/' + file.name);
   });
 
   form.on('end', () => {
-    sendRes.bind(res)('', {filePath});
+    sendRes.bind(res)('', {filePath: filePath + '/' + fileName});
   });
   form.parse(req);
 };
